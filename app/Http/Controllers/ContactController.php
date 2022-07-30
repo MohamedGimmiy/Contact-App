@@ -42,6 +42,15 @@ class ContactController extends Controller
         // for debugging
         //dd($request->all());
         //$request->only('first_name','last_name');
-        //$request->except('first_name');
+        $request->validate([
+            'first_name'=> 'required',
+            'last_name'=> 'required',
+            'email'=> 'required|email',
+            'phone' => 'required|numeric',
+            'address'=> 'required',
+            'company_id'=> 'required|exists:companies,id'
+        ]);
+        dd($request->except('first_name'));
+
     }
 }
