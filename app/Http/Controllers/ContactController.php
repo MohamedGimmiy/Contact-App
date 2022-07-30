@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class ContactController extends Controller
         //$contacts = Contact::orderBy('first_name','asc')->get();
         //$contacts = Contact::all();
         
-        return view('contacts.index', compact('contacts'));
+        $companies = Company::orderBy('name','asc')->pluck('name','id');
+        return view('contacts.index', compact('contacts', 'companies'));
     }
     public function create()
     {

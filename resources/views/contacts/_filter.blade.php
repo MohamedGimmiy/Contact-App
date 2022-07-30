@@ -5,9 +5,11 @@
         <div class="col">
           <select class="custom-select">
             <option value="" selected>All Companies</option>
-            <option value="1">Company One</option>
-            <option value="2">Company Two</option>
-            <option value="3">Company Three</option>
+            @if ($companies->count())
+                @foreach ($companies as $id => $name)
+                    <option value="{{$id}}">{{$name}}</option>
+                @endforeach
+            @endif
           </select>
         </div>
         <div class="col">
