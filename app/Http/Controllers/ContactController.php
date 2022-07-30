@@ -15,8 +15,7 @@ class ContactController extends Controller
             if($company_id = request('company_id')){
                 $query->where('company_id', $company_id);
             }
-        })->
-        paginate(10);
+        })->paginate(10);
         //$contacts = Contact::orderBy('first_name','asc')->get();
         //$contacts = Contact::all();
         
@@ -26,8 +25,9 @@ class ContactController extends Controller
     public function create()
     {
         # code...
+        $contact = new Contact();
         $companies = Company::orderBy('name','asc')->pluck('name','id')->prepend('All Companies', ' ');
-        return view('contacts.create',compact('companies'));
+        return view('contacts.create',compact('companies','contact'));
     }
     public function show($id)
     {
@@ -53,5 +53,31 @@ class ContactController extends Controller
         //dd($request->except('first_name'));
         Contact::create($request->all());
         return redirect()->route('contacts.index')->with('message','Contact has been added Successfully!');
+    }
+
+    public function edit($id)
+    {
+        # code...
+        $contact = Contact::findOrFail($id);
+        $companies = Company::orderBy('name','asc')->pluck('name','id')->prepend('All Companies', ' ');
+        return view('contacts.edit', compact('companies','contact'));
+    }
+    public function update($id, Request $request)
+    {
+        # code...
+        //dd($request->all());
+        $request->validate([
+            'first_name'=> 'required',
+            'last_name'=> 'required',
+            'email'=> 'required|email',
+            'phone' => 'required|numeric',
+            'address'=> 'required',
+            'company_id'=> 'required|exists:companies,id'
+        ]);
+        $contact = Contact::findOrFail($id);
+        $contact->update($request->all());
+        
+        return redirect()->route('contacts.index')->with('message','Contact has been updated Successfully!');
+
     }
 }
