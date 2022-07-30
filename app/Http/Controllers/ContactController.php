@@ -11,7 +11,7 @@ class ContactController extends Controller
     public function index()
     {
         # code...
-        $contacts = Contact::orderBy('first_name','asc')->where(function ($query){
+        $contacts = Contact::orderBy('id','desc')->where(function ($query){
             if($company_id = request('company_id')){
                 $query->where('company_id', $company_id);
             }
@@ -50,7 +50,8 @@ class ContactController extends Controller
             'address'=> 'required',
             'company_id'=> 'required|exists:companies,id'
         ]);
-        dd($request->except('first_name'));
-
+        //dd($request->except('first_name'));
+        Contact::create($request->all());
+        return redirect()->route('contacts.index')->with('message','Contact has been added Successfully!');
     }
 }
