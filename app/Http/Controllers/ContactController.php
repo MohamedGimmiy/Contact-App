@@ -11,15 +11,7 @@ class ContactController extends Controller
     public function index()
     {
         # code...
-        $contacts = Contact::orderBy('id','desc')->where(function ($query){
-            if($company_id = request('company_id')){
-                $query->where('company_id', $company_id);
-            }
-
-            if($search = request('search')){
-                $query->where('first_name', 'LIKE',"%{$search}%");
-            }
-        })->paginate(10);
+        $contacts = Contact::latestFirst()->filter()->paginate(10);
         //$contacts = Contact::orderBy('first_name','asc')->get();
         //$contacts = Contact::all();
 
