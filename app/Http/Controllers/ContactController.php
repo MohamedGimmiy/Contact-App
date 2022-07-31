@@ -11,11 +11,14 @@ class ContactController extends Controller
     public function index()
     {
         # code...
-        $contacts = Contact::latestFirst()->paginate(10);
         //$contacts = Contact::orderBy('first_name','asc')->get();
         //$contacts = Contact::all();
-
         $companies = Company::orderBy('name','asc')->pluck('name','id')->prepend('All Companies', ' ');
+        // \DB::enableQueryLog();
+        $contacts = Contact::latestFirst()->paginate(10);
+
+
+        // dd(\DB::getQueryLog());
         return view('contacts.index', compact('contacts', 'companies'));
     }
     public function create()
