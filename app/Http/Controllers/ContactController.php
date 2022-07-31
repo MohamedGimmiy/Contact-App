@@ -11,7 +11,7 @@ class ContactController extends Controller
     public function index()
     {
         # code...
-        $contacts = Contact::latestFirst()->filter()->paginate(10);
+        $contacts = Contact::latestFirst()->paginate(10);
         //$contacts = Contact::orderBy('first_name','asc')->get();
         //$contacts = Contact::all();
 
