@@ -15,10 +15,14 @@ class ContactController extends Controller
             if($company_id = request('company_id')){
                 $query->where('company_id', $company_id);
             }
+
+            if($search = request('search')){
+                $query->where('first_name', 'LIKE',"%{$search}%");
+            }
         })->paginate(10);
         //$contacts = Contact::orderBy('first_name','asc')->get();
         //$contacts = Contact::all();
-        
+
         $companies = Company::orderBy('name','asc')->pluck('name','id')->prepend('All Companies', ' ');
         return view('contacts.index', compact('contacts', 'companies'));
     }
@@ -46,7 +50,7 @@ class ContactController extends Controller
             'first_name'=> 'required',
             'last_name'=> 'required',
             'email'=> 'required|email',
-            'phone' => 'required|numeric',
+            'phone' => 'required',
             'address'=> 'required',
             'company_id'=> 'required|exists:companies,id'
         ]);
@@ -70,7 +74,7 @@ class ContactController extends Controller
             'first_name'=> 'required',
             'last_name'=> 'required',
             'email'=> 'required|email',
-            'phone' => 'required|numeric',
+            'phone' => 'required',
             'address'=> 'required',
             'company_id'=> 'required|exists:companies,id'
         ]);
@@ -85,7 +89,7 @@ class ContactController extends Controller
         # code...
         $contact = Contact::find($id);
         $contact->delete();
-        return back()->with('message','Contact has been deleted Successfully!');
 
+        return back()->with('message','Contact has been deleted Successfully!');
     }
 }

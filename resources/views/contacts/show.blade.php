@@ -56,10 +56,14 @@
                   <div class="form-group row mb-0">
                     <div class="col-md-9 offset-md-3">
                         <a href="{{route('contacts.edit', $contact->id)}}" class="btn btn-info">Edit</a>
-                        <a href="#" class="btn btn-outline-danger">Delete</a>
+                        <a href="{{route('contacts.destroy', $contact->id)}}" class="btn-delete btn btn-outline-danger">Delete</a>
                         <a href="{{route('contacts.index')}}" class="btn btn-outline-secondary">Cancel</a>
                     </div>
                   </div>
+                   <form id="form-delete" method="POST" style="display: none;">
+                    @csrf
+                    @method('DELETE')
+                </form>
                 </div>
               </div>
             </div>
