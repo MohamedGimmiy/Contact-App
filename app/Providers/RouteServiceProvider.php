@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Contact;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -26,6 +27,11 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // explicit route model binding for customizing where condition
+        /* Route::bind('contact', function ($value) {
+            return Contact::where('first_name',$value)->firstOrFail();
+        }); */
+
         $this->configureRateLimiting();
 
         $this->routes(function () {
