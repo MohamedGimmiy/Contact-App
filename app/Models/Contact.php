@@ -37,4 +37,11 @@ class Contact extends Model
         static::addGlobalScope(new FilterScope);
         static::addGlobalScope(new ContactSearchScope);
     }
+
+    // customizing key route model binding to use first_name instead of id
+/*     public function getRouteKeyName()
+    {
+        # code...
+        return 'first_name';
+    } */
 }
