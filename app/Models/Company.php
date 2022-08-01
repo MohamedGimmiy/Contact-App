@@ -14,4 +14,10 @@ class Company extends Model
         return $this->hasMany(Contact::class, 'company_id');
     }
 
+    public function user()
+    {
+        # code...
+        return $this->belongsTo(User::class);
+    }
+
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Settings\AccountController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,18 +25,12 @@ Route::middleware(['auth','verified'])->group(function(){
     Route::delete('/contacts/{id}', [ContactController::class, 'destroy'])->name('contacts.destroy');
     Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
     Route::get('/',[ContactController::class, 'index'])->name('contacts.index');
-
-
 });
-
-
-
-
-
-
 
 
 
 Auth::routes(['verify' => true]);
 
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/settings/account', [AccountController::class, 'index']);

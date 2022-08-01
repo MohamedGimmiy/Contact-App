@@ -11,12 +11,18 @@ use Illuminate\Database\Eloquent\Model;
 class Contact extends Model
 {
     use HasFactory;
-    protected $fillable = ['first_name','last_name','address','email','phone','company_id'];
+    protected $fillable = ['first_name','last_name','address','email','phone','company_id', 'user_id'];
     public $filterColumns = ['company_id'];
     public function company()
     {
 
         return $this->belongsTo(Company::class);
+    }
+
+    public function user()
+    {
+        # code...
+        return $this->belongsTo(User::class);
     }
 
     // creating a local scope orderBy
