@@ -20,11 +20,12 @@ return new class extends Migration
             $table->string('phone');
             $table->string('email');
             $table->string('address');
-            $table->unsignedBigInteger('company_id');
             $table->timestamps();
 
             // forign key references primary key
-            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade')->onUpdate('cascade');
+            //$table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('company_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
