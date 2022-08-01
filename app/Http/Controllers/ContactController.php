@@ -30,10 +30,11 @@ class ContactController extends Controller
         $companies = auth()->user()->companies()->orderBy('name','asc')->pluck('name','id')->prepend('All Companies', ' ');
         return view('contacts.create',compact('companies','contact'));
     }
-    public function show($id)
+
+    // route model binding
+    public function show(Contact $contact)
     {
         # code...
-        $contact = Contact::find($id);
         return view('contacts.show',compact('contact'));
     }
 
@@ -56,14 +57,15 @@ class ContactController extends Controller
         return redirect()->route('contacts.index')->with('message','Contact has been added Successfully!');
     }
 
-    public function edit($id)
+    public function edit(Contact $contact)
     {
         # code...
-        $contact = Contact::findOrFail($id);
+        //$contact = Contact::findOrFail($id);
         $companies = auth()->user()->companies()->orderBy('name','asc')->pluck('name','id')->prepend('All Companies', ' ');
         return view('contacts.edit', compact('companies','contact'));
     }
-    public function update($id, Request $request)
+
+    public function update(Contact $contact, Request $request)
     {
         # code...
         //dd($request->all());
@@ -75,16 +77,14 @@ class ContactController extends Controller
             'address'=> 'required',
             'company_id'=> 'required|exists:companies,id'
         ]);
-        $contact = Contact::findOrFail($id);
         $contact->update($request->all());
 
         return redirect()->route('contacts.index')->with('message','Contact has been updated Successfully!');
 
     }
-    public function destroy($id)
+    public function destroy(Contact $contact)
     {
         # code...
-        $contact = Contact::find($id);
         $contact->delete();
 
         return back()->with('message','Contact has been deleted Successfully!');
