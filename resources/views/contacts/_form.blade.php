@@ -10,7 +10,7 @@
           @error('first_name')
             <div class="invalid-feedback">
                 {{$message}}
-            </div> 
+            </div>
           @enderror
 
         </div>
@@ -25,7 +25,7 @@
           @error('last_name')
           <div class="invalid-feedback">
               {{$message}}
-          </div> 
+          </div>
         @enderror
         </div>
 
@@ -40,7 +40,7 @@
           @error('email')
           <div class="invalid-feedback">
               {{$message}}
-          </div> 
+          </div>
         @enderror
         </div>
       </div>
@@ -54,7 +54,7 @@
           @error('phone')
           <div class="invalid-feedback">
               {{$message}}
-          </div> 
+          </div>
         @enderror
         </div>
       </div>
@@ -68,7 +68,7 @@
           @error('address')
           <div class="invalid-feedback">
               {{$message}}
-          </div> 
+          </div>
         @enderror
         </div>
       </div>
@@ -79,13 +79,13 @@
           is-invalid
           @enderror">
             @foreach ($companies as $id => $name)
-                <option {{$id === old('company_id',$contact->company_id) ? 'selected' : ''}} value="{{$id}}">{{$name}}</option>
+                <option {{$id === old('company_id', $contact->company_id) ? 'selected' : ''}} value="{{$id}}">{{$name}}</option>
             @endforeach
           </select>
           @error('company_id')
           <div class="invalid-feedback">
               {{$message}}
-          </div> 
+          </div>
         @enderror
         </div>
       </div>
