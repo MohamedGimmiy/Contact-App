@@ -32,11 +32,13 @@ Route::middleware(['auth','verified'])->group(function(){
 /*     Route::get('/contacts/{contact:first_name}', [ContactController::class, 'show'])->name('contacts.show');
  */
 
-    //Route::resource('/contacts', ContactController::class);
-    Route::resources([
+//Route::resource('/contacts', ContactController::class)->only('create','update','edit','destroy','store');
+//Route::resource('/contacts', ContactController::class)->except(['index','show']);
+Route::resources([
         '/contacts' => ContactController::class,
         '/companies' => CompanyController::class
     ]);
+
     /* Route::put('/contacts/{contact}', [ContactController::class, 'update'])->name('contacts.update');
     Route::delete('/contacts/{contact}', [ContactController::class, 'destroy'])->name('contacts.destroy');
     Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
@@ -48,5 +50,7 @@ Route::middleware(['auth','verified'])->group(function(){
 Auth::routes(['verify' => true]);
 
 Route::get('/dashboard', [HomeController::class, 'index'])->name('home');
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/settings/account', [AccountController::class, 'index']);
