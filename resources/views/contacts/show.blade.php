@@ -8,7 +8,7 @@
           <div class="card">
             <div class="card-header card-title">
               <strong>Contact Details</strong>
-            </div>           
+            </div>
             <div class="card-body">
               <div class="row">
                 <div class="col-md-12">
@@ -60,10 +60,7 @@
                         <a href="{{route('contacts.index')}}" class="btn btn-outline-secondary">Cancel</a>
                     </div>
                   </div>
-                   <form id="form-delete" method="POST" style="display: none;">
-                    @csrf
-                    @method('DELETE')
-                </form>
+                  @include('layouts.delete-form')
                 </div>
               </div>
             </div>

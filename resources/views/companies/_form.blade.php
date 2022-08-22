@@ -2,12 +2,12 @@
 <div class="row">
     <div class="col-md-12">
       <div class="form-group row">
-        <label for="first_name" class="col-md-3 col-form-label">First Name</label>
+        <label for="first_name" class="col-md-3 col-form-label"> Name</label>
         <div class="col-md-9">
-          <input type="text" name="first_name" value="{{old('first_name', $contact->first_name)}}" id="first_name" class="form-control @error('first_name')
+          <input type="text" name="name" value="{{old('name', $company->name)}}" id="name" class="form-control @error('name')
           is-invalid
           @enderror">
-          @error('first_name')
+          @error('name')
             <div class="invalid-feedback">
                 {{$message}}
             </div>
@@ -17,24 +17,9 @@
       </div>
 
       <div class="form-group row">
-        <label for="last_name" class="col-md-3 col-form-label ">Last Name</label>
-        <div class="col-md-9">
-          <input type="text" name="last_name" value="{{old('last_name',$contact->last_name)}}" id="last_name" class="form-control @error('last_name')
-          is-invalid
-          @enderror">
-          @error('last_name')
-          <div class="invalid-feedback">
-              {{$message}}
-          </div>
-        @enderror
-        </div>
-
-      </div>
-
-      <div class="form-group row">
         <label for="email" class="col-md-3 col-form-label ">Email</label>
         <div class="col-md-9">
-          <input type="text" name="email" value="{{old('email',$contact->email)}}" id="email" class="form-control @error('email')
+          <input type="text" name="email" value="{{old('email',$company->email)}}" id="email" class="form-control @error('email')
           is-invalid
           @enderror">
           @error('email')
@@ -46,12 +31,12 @@
       </div>
 
       <div class="form-group row">
-        <label for="phone" class="col-md-3 col-form-label ">Phone</label>
+        <label for="phone" class="col-md-3 col-form-label ">Website</label>
         <div class="col-md-9">
-          <input type="text" name="phone" value="{{old('phone',$contact->phone)}}" id="phone" class="form-control @error('phone')
+          <input type="url" name="website" value="{{old('website',$company->website)}}" id="website" class="form-control @error('website')
           is-invalid
           @enderror">
-          @error('phone')
+          @error('website')
           <div class="invalid-feedback">
               {{$message}}
           </div>
@@ -62,9 +47,9 @@
       <div class="form-group row">
         <label for="name" class="col-md-3 col-form-label ">Address</label>
         <div class="col-md-9">
-          <textarea name="address" value="{{old('address',$contact->address)}}" id="address" rows="3" class="form-control @error('address')
+          <textarea name="address" value="{{old('address',$company->address)}}" id="address" rows="3" class="form-control @error('address')
           is-invalid
-          @enderror">{{old('address',$contact->address)}}</textarea>
+          @enderror">{{old('address',$company->address)}}</textarea>
           @error('address')
           <div class="invalid-feedback">
               {{$message}}
@@ -72,28 +57,12 @@
         @enderror
         </div>
       </div>
-      <div class="form-group row">
-        <label for="company_id" class="col-md-3 col-form-label">Company</label>
-        <div class="col-md-9">
-          <select name="company_id" id="company_id" class="form-control @error('company_id')
-          is-invalid
-          @enderror">
-            @foreach ($companies as $id => $name)
-                <option {{$id === old('company_id', $contact->company_id) ? 'selected' : ''}} value="{{$id}}">{{$name}}</option>
-            @endforeach
-          </select>
-          @error('company_id')
-          <div class="invalid-feedback">
-              {{$message}}
-          </div>
-        @enderror
-        </div>
-      </div>
+
       <hr>
       <div class="form-group row mb-0">
         <div class="col-md-9 offset-md-3">
-            <button type="submit" class="btn btn-primary">{{ $contact->exists? 'Update' : 'Save'}}</button>
-            <a href="{{ route('contacts.index') }}" class="btn btn-outline-secondary">Cancel</a>
+            <button type="submit" class="btn btn-primary">{{ $company->exists? 'Update' : 'Save'}}</button>
+            <a href="{{ route('companies.index') }}" class="btn btn-outline-secondary">Cancel</a>
         </div>
       </div>
     </div>

@@ -72,6 +72,6 @@ class ContactController extends Controller
         # code...
         $contact->delete();
 
-        return back()->with('message','Contact has been deleted Successfully!');
+        return redirect()->route('contacts.index')->with('message','Contact has been deleted Successfully!');
     }
 }

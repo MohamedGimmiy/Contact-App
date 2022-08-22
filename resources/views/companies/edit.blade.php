@@ -8,13 +8,13 @@
         <div class="col-md-8">
           <div class="card">
             <div class="card-header card-title">
-              <strong>Edit New Contact</strong>
+              <strong>Edit New Company</strong>
             </div>
             <div class="card-body">
-                <form action="{{route('contacts.update', $contact->id)}}" method="POST">
+                <form action="{{route('companies.update', $company->id)}}" method="POST">
                     @method('PUT')
                     @csrf
-                    @include('contacts._form')
+                    @include('companies._form')
                 </form>
             </div>
           </div>
@@ -23,4 +23,4 @@
     </div>
   </main>
 @endsection
-@section('title','Contact App | Edit new contact')
+@section('title','Contact App | Edit new company')

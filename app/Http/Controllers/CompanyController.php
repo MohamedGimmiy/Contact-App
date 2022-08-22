@@ -55,7 +55,7 @@ class CompanyController extends Controller
      */
     public function show(Company $company)
     {
-        return view('companies.show', 'company');
+        return view('companies.show', compact('company'));
     }
 
     /**
@@ -67,7 +67,7 @@ class CompanyController extends Controller
     public function edit(Company $company)
     {
         //
-        return view('companies.edit', 'company');
+        return view('companies.edit', compact('company'));
 
     }
 
@@ -96,7 +96,7 @@ class CompanyController extends Controller
     {
         //
         $company->delete();
-        return back()->with('message','Company has been deleted successfully');
+        return redirect()->route('companies.index')->with('message','Company has been deleted successfully');
 
     }
 }
