@@ -35,6 +35,16 @@ Route::middleware(['auth','verified'])->group(function(){
 //Route::resource('/contacts', ContactController::class)->only('create','update','edit','destroy','store');
 //Route::resource('/contacts', ContactController::class)->except(['index','show']);
 
+// Changing route parameters name
+/* Route::resource('/contacts', ContactController::class)->parameters([
+    'contacts' => 'kontak'
+]); */
+
+// changing routes names
+/* Route::resource('/contacts', ContactController::class)->names([
+    'index' => 'contacts.all',
+    'show' => 'contacts.view'
+]); */
 //Nested resources
 //Route::resource('/companies.contacts', ContactController::class);
 Route::resources([
