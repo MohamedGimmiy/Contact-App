@@ -13,6 +13,11 @@ class Company extends Model
     public function contacts(){
         return $this->hasMany(Contact::class, 'company_id');
     }
+    public static function userCompanies()
+    {
+        # code...
+        return self::where('user_id', auth()->id())->orderBy('name','asc')->pluck('name','id')->prepend('All Companies', ' ');
+    }
 
     public function user()
     {

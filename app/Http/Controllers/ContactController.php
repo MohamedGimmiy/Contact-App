@@ -14,10 +14,9 @@ class ContactController extends Controller
         # code...
         //$contacts = Contact::orderBy('first_name','asc')->get();
         //$contacts = Contact::all();
-        $user = auth()->user();
-        $companies =$user->companies()->orderBy('name','asc')->pluck('name','id')->prepend('All Companies', ' ');
+        $companies = Company::userCompanies();
         // \DB::enableQueryLog();
-        $contacts = $user->contacts()->latestFirst()->paginate(10);
+        $contacts = auth()->user()->contacts()->latestFirst()->paginate(10);
 
 
         // dd(\DB::getQueryLog());
@@ -27,9 +26,10 @@ class ContactController extends Controller
     {
         # code...
         $contact = new Contact();
-        $companies = auth()->user()->companies()->orderBy('name','asc')->pluck('name','id')->prepend('All Companies', ' ');
+        $companies = Company::userCompanies();
         return view('contacts.create',compact('companies','contact'));
     }
+
 
     // route model binding
     public function show(Contact $contact)
@@ -61,7 +61,7 @@ class ContactController extends Controller
     {
         # code...
         //$contact = Contact::findOrFail($id);
-        $companies = auth()->user()->companies()->orderBy('name','asc')->pluck('name','id')->prepend('All Companies', ' ');
+        $companies = Company::userCompanies();
         return view('contacts.edit', compact('companies','contact'));
     }
 
