@@ -34,6 +34,9 @@ Route::middleware(['auth','verified'])->group(function(){
 
 //Route::resource('/contacts', ContactController::class)->only('create','update','edit','destroy','store');
 //Route::resource('/contacts', ContactController::class)->except(['index','show']);
+
+//Nested resources
+//Route::resource('/companies.contacts', ContactController::class);
 Route::resources([
         '/contacts' => ContactController::class,
         '/companies' => CompanyController::class
