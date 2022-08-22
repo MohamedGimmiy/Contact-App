@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ContactRequest;
 use App\Models\Company;
 use App\Models\Contact;
 use App\Models\User;
@@ -38,20 +39,12 @@ class ContactController extends Controller
         return view('contacts.show',compact('contact'));
     }
 
-    public function store(Request $request)
+    public function store(ContactRequest $request)
     {
         # code...
         // for debugging
         //dd($request->all());
         //$request->only('first_name','last_name');
-        $request->validate([
-            'first_name'=> 'required',
-            'last_name'=> 'required',
-            'email'=> 'required|email',
-            'phone' => 'required',
-            'address'=> 'required',
-            'company_id'=> 'required|exists:companies,id'
-        ]);
         //dd($request->except('first_name'));
         $request->user()->contacts()->create($request->all());
         return redirect()->route('contacts.index')->with('message','Contact has been added Successfully!');
@@ -65,18 +58,10 @@ class ContactController extends Controller
         return view('contacts.edit', compact('companies','contact'));
     }
 
-    public function update(Contact $contact, Request $request)
+    public function update(Contact $contact, ContactRequest $request)
     {
         # code...
         //dd($request->all());
-        $request->validate([
-            'first_name'=> 'required',
-            'last_name'=> 'required',
-            'email'=> 'required|email',
-            'phone' => 'required',
-            'address'=> 'required',
-            'company_id'=> 'required|exists:companies,id'
-        ]);
         $contact->update($request->all());
 
         return redirect()->route('contacts.index')->with('message','Contact has been updated Successfully!');
