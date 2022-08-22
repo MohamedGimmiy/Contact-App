@@ -24,10 +24,10 @@
                     <thead>
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Company Name</th>
+                        <th scope="col">Name</th>
                         <th scope="col">Address</th>
-                        <th scope="col">Website</th>
                         <th scope="col">Email</th>
+                        <th scope="col">Contacts</th>
                         <th scope="col">Actions</th>
                       </tr>
                     </thead>
@@ -41,8 +41,9 @@
                                 <th scope="row">{{$index + $companies->firstItem() }}</th>
                                 <td>{{$company->name}}</td>
                                 <td>{{$company->address}}</td>
-                                <td>{{$company->website}}</td>
                                 <td>{{$company->email}}</td>
+                                <td>{{$company->contacts->count()}}</td>
+
                                 <td width="150">
                                   <a href="{{route('companies.show', $company->id)}}" class="btn btn-sm btn-circle btn-outline-info" title="Show"><i class="fa fa-eye"></i></a>
                                   <a href="{{route('companies.edit', $company->id)}}" class="btn btn-sm btn-circle btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></a>
@@ -50,11 +51,7 @@
                                 </td>
                               </tr>
                             @endforeach
-                            <form id="form-delete" method="POST" style="display: none;">
-                            @csrf
-                            @method('DELETE')
-
-                        </form>
+                              @include('layouts.delete-form')
                         @endif
 
                     </tbody>

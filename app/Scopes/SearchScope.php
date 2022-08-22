@@ -14,7 +14,7 @@ class SearchScope implements Scope {
 
         if($search = request('search')){
 
-            $columns = property_exists($model, 'searchColumns') ? $model->searchColumnds : $this->searchColumns;
+            $columns = property_exists($model, 'searchColumns') ? $model->searchColumns : $this->searchColumns;
 
             foreach($columns as $index => $column){
                 $arr = explode('.', $column);

@@ -38,8 +38,8 @@
                  select = document.getElementById('filter_company_id');
 
 
-                input.value = "";
-                select.selectedIndex = 0;
+                if(input) input.value = "";
+                if(select) select.selectedIndex = 0;
                 //window.location.href = window.location.href.split('search')[0].replace('&',"")
                 window.location.href = window.location.href.split('?')[0];
             });
@@ -49,14 +49,14 @@
             let query = location.search,
             pattern = /[?&]search=/,
             button = document.getElementById('search-clear');
-            if(button){
+
+            if(button == undefined)return;
                 if(pattern.test(query)){
                     button.style.display = "block"
                 }
                 else {
                     button.style.display = "none";
                 }
-            }
         }
         toggleClearButton();
 
