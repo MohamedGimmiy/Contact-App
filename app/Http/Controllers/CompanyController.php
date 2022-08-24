@@ -15,7 +15,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $companies = auth()->user()->companies()->with('contacts')->latest()->paginate(10);
+        $companies = auth()->user()->companies()->withCount('contacts')->latest()->paginate(10);
         // \DB::enableQueryLog();
 
 
