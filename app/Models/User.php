@@ -34,7 +34,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'remember_token',
     ];
-
+    // adding eager loading for all excuted queries
+    /* protected $with = [
+        'contacts',
+        'companies'
+    ]; */
     /**
      * The attributes that should be cast.
      *
