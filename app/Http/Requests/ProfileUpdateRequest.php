@@ -31,4 +31,21 @@ class ProfileUpdateRequest extends FormRequest
             'profile_picture' => ['nullable', 'mimes:png,jpg,bmp']
         ];
     }
+    public function handleRequest()
+    {
+        # code...
+        $profileData = $this->validated();
+        $profile = $this->user();
+        if($this->hasFile('profile_picture')){
+            $picture = $this->profile_picture;
+            /* dump($picture->getClientOriginalName());
+            dump($picture->getClientOriginalExtension());
+            dump($picture->getClientMimeType()) */;
+            $fileName = "profile-picture-{$profile->id}." . $picture->getClientOriginalExtension();
+
+            $picture->move(public_path('upload'), $fileName);
+            $profileData['profile_picture'] = $fileName;
+        }
+        return $profileData;
+    }
 }

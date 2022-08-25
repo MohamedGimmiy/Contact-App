@@ -27,9 +27,9 @@ Route::resources([
     ]);
     Route::get('/dashboard', [HomeController::class, 'index'])->name('home');
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/settings/account', [AccountController::class, 'index']);
 });
 
+Route::get('/settings/account', [AccountController::class, 'index']);
 Route::get('/settings/profile', [ProfileController::class, 'edit'])->name('settings.profile.edit');
 Route::put('/settings/profile', [ProfileController::class, 'update'])->name('settings.profile.update');
 
