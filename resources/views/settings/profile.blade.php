@@ -20,9 +20,7 @@
               </div><!-- /.col-md-3 -->
 
             <div class="col-md-9">
-                @if ($message = session('message'))
-                    <div class="alert alert-success">{{$message}}</div>
-                @endif
+                @include('layouts._message')
               <form action="{{route('settings.profile.update')}}" method="POST">
                 @method('PUT')
                 @csrf
