@@ -7,6 +7,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Settings\AccountController;
 use App\Http\Controllers\Settings\ProfileController;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,4 +37,8 @@ Route::put('/settings/profile', [ProfileController::class, 'update'])->name('set
 Auth::routes(['verify' => true]);
 
 
+// how to make a resource downloadable
+Route::get('/download', function (){
+    return Storage::download('myfile.txt', 'downloadfile.txt');
+});
 
