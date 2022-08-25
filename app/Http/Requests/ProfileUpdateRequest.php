@@ -24,10 +24,11 @@ class ProfileUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'first_name' => ['required', 'string', 'max:255'],
-            'last_name'  => ['required', 'string', 'max:255'],
-            'company'    => ['nullable'],
-            'bio'        => ['nullable'],
+            'first_name'      => ['required', 'string', 'max:255'],
+            'last_name'       => ['required', 'string', 'max:255'],
+            'company'         => ['nullable'],
+            'bio'             => ['nullable'],
+            'profile_picture' => ['nullable', 'mimes:png,jpg,bmp']
         ];
     }
 }
