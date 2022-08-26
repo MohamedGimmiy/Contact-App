@@ -37,7 +37,7 @@ Route::put('/settings/profile', [ProfileController::class, 'update'])->name('set
 Auth::routes(['verify' => true]);
 
 
-// how to make a resource downloadable
+// How to make a resource downloadable
 Route::get('/download', function (){
     return Storage::download('myfile.txt', 'downloadfile.txt');
 });
