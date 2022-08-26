@@ -12,7 +12,7 @@ class SearchScope implements Scope {
     public function apply(Builder $builder, Model $model)
     {
 
-        if($search = request('search')){
+        if($search = request()->query('search')){
 
             $columns = property_exists($model, 'searchColumns') ? $model->searchColumns : $this->searchColumns;
 
