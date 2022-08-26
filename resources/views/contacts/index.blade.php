@@ -54,7 +54,8 @@
                     </tbody>
                   </table>
                   {{-- for pagination --}}
-                  {{$contacts->appends(request()->only('company_id'))->links()}}
+                  {{$contacts->withQueryString()->links()}}
+                  {{-- {{$contacts->appends(request()->only('company_id', 'search'))->links()}} --}}
                 </div>
               </div>
             </div>
