@@ -13,7 +13,7 @@ class Company extends Model
     public $searchColumns = ['name', 'address', 'email', 'website'];
 
     public function contacts(){
-        return $this->hasMany(Contact::class, 'company_id');
+        return $this->hasMany(Contact::class)->withoutGlobalScope(SearchScope::class);
     }
     public static function userCompanies()
     {
