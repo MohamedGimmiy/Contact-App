@@ -7,40 +7,75 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Edacious-App
+# Contact-App
 
-![GitHub Logo](src/assets/imgs/Edacious-Free-UI-Kit.jpg)
+![GitHub Logo](projectImages/contacts-all.png)
 
-## Overview
-Edacious app is an open source template PSD template that I converted to ionic angular app.
-
-
-## Table of contents (pages)
-
-* Project pages 
-    - **authentication** page (main page of sign up and login)
-    - **Verify** page contains 3 steps 
-    - **Home** page 
-    - **All-latest-recipes** page
-    - **Recipe-details** page 
-    - **people** page 
-    - **Chat** page 
-    - **Settings** page
-* Theming and styling
-    - PSD template
-    - assets folder
-
-### Usage and problems it solves
-    * element positioning of (relative and obsolute)
-    * Which elements to be extracted from PSD
-    * Angular routing
-    * Chat UI formation
-    * Javascript tips and tricks
+# Overview
+## Contacts app is laravel application that tie users contacts with companies for bussiness purposes.
 
 
-## How to install
 
-* First intall node js from [here](https://nodejs.org/en/)
-* second ionic webiste and follow instruction [here](https://ionicframework.com/docs/intro/cli)
+# Table of contents (pages)
 
-* Third run ionic serve and enjoy :D
+## Project pages
+
+ ## login page
+![login Logo](projectImages/login.png)
+
+## Register page 
+![register Logo](projectImages/register.png)
+
+## Email verification after registration page 
+![register Logo](projectImages/email-verify.png)
+
+## Reset password page 
+![register Logo](projectImages/forget-password.png)
+
+## dashboard page 
+![dashboard Logo](projectImages/dashboard.png)
+
+## contacts page 
+![GitHub Logo](projectImages/contacts-all.png)
+
+## contacts filter by company
+![GitHub Logo](projectImages/contacts-filter_byCompany.png)
+
+## creat contact page 
+![GitHub Logo](projectImages/create-contact.png)'
+
+## edit contact page 
+![GitHub Logo](projectImages/edit-contact.png)
+
+## show contact details page 
+![GitHub Logo](projectImages/show-contact.png)
+
+## pagination feature 
+![GitHub Logo](projectImages/pagination-feature.png)
+
+## contact form validation feature 
+![GitHub Logo](projectImages/form-validation-feature.png)
+
+## logout functionality 
+![GitHub Logo](projectImages/logout.png)
+
+## profile page 
+![GitHub Logo](projectImages/profile.png)
+
+## search feature (contacts / companies) 
+![GitHub Logo](projectImages/search-feature.png)
+
+## create company
+![GitHub Logo](projectImages/create-company.png)
+
+## show company details page 
+![GitHub Logo](projectImages/show-company-details.png)
+
+## edit company page 
+![GitHub Logo](projectImages/edit-company.png)
+
+## delete company 
+![GitHub Logo](projectImages/company-has-been-deleted.png)
+
+## company form validation feature 
+![GitHub Logo](projectImages/company-form-validation.png)
