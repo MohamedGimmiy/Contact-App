@@ -13,7 +13,7 @@
                       </div>
                       <div class="list-group list-group-flush">
                           <a href="#" class="list-group-item list-group-item-action active"><span>Profile</span></a>
-                          <a href="#" class="list-group-item list-group-item-action"><span>Account</span></a>
+                          <a href="{{route('settings.profile.account')}}" class="list-group-item list-group-item-action"><span>Account</span></a>
                           <a href="#" class="list-group-item list-group-item-action"><span>Import & Export</span></a>
                       </div>
                   </div>
@@ -71,7 +71,7 @@
                               <label for="bio">Profile picture</label>
                               <div class="fileinput fileinput-new" data-provides="fileinput">
                                   <div class="fileinput-new img-thumbnail" style="width: 150px; height: 150px;">
-                                      <img src="{{$user->ProfileUrl() }}"  alt="...">
+                                      <img src="{{$user->ProfileUrl() == null? '':$user->ProfileUrl() }}"  alt="...">
                                   </div>
                                   <div class="fileinput-preview fileinput-exists img-thumbnail" style="max-width: 150px; max-height: 150px;"></div>
                                   <div class="mt-2">
